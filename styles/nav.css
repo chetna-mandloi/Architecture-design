@@ -1,0 +1,376 @@
+:root {
+  --white: black;
+  --black: white;
+}
+@font-face {
+  font-family: Bakbak;
+  src: url(../fonts/BakbakOne-Regular.ttf);
+}
+@font-face {
+  font-family: Devanagri;
+  src: url(../fonts/devanagari-sangam-mn.ttf);
+}
+@font-face {
+  font-family: Copperplate;
+  src: url(../fonts/copperplate.ttf);
+}
+@font-face {
+  font-family: BaiJamjuree;
+  src: url(../fonts/BaiJamjuree-Regular.ttf);
+}
+@font-face {
+  font-family: BaiJamjur;
+  src: url(../fonts/BaiJamjuree-Light.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  /* background-color: black; */
+}
+html,
+body {
+  /* height: 100%; */
+  width: 100%;
+}
+nav {
+  width: 0vh;
+  /* padding: 1vmax; */
+  position: fixed;
+  z-index: 2;
+}
+.logo-cnt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40vmax;
+  height: 17vmax;
+  transform: rotate(-45deg) translate(73%, -75%);
+  background-color: rgb(53, 53, 53);
+}
+.active-logo {
+  animation: activelogo 1.7s ease-in-out;
+  transform: rotate(-45deg) translate(-19%, -75%);
+}
+.inactive-logo {
+  animation: inactivelogo 1.7s ease-in-out;
+  transform: rotate(-45deg) translate(73%, -75%);
+}
+.logo {
+  transform: rotate(45deg);
+  width: 7vmax;
+}
+.nav-item-cnt {
+  padding: 0 7vmax;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50vmax;
+  height: 6vmax;
+  transform: rotate(-45deg) translate(90%, -225%);
+  background-color: var(--white);
+  box-shadow: 0px 25px 18px -18px #313131;
+}
+.active-nav {
+  animation: activeNavItem 1.7s ease-in-out;
+  transform: rotate(-45deg) translate(-5%, -225%);
+}
+.inactive-nav {
+  animation: inactiveNavItem 1.7s ease-in-out;
+  transform: rotate(-45deg) translate(90%, -225%);
+}
+@keyframes inactivelogo {
+  0% {
+    transform: rotate(-45deg) translate(-19%, -75%);
+  }
+  100% {
+    transform: rotate(-45deg) translate(73%, -75%);
+  }
+}
+@keyframes activelogo {
+  0% {
+    transform: rotate(-45deg) translate(73%, -75%);
+  }
+  100% {
+    transform: rotate(-45deg) translate(-19%, -75%);
+  }
+}
+@keyframes activeNavItem {
+  0% {
+    transform: rotate(-45deg) translate(90%, -225%);
+    /* box-shadow: 0px 25px 18px -18px #ffffff; */
+  }
+  100% {
+    transform: rotate(-45deg) translate(-5%, -225%);
+    /* box-shadow: 0px 25px 18px -18px #414141; */
+  }
+}
+@keyframes inactiveNavItem {
+  0% {
+    transform: rotate(-45deg) translate(-5%, -225%);
+  }
+  100% {
+    transform: rotate(-45deg) translate(90%, -225%);
+  }
+}
+
+.nav-item {
+  font-family: Bakbak;
+  font-size: 0.9vmax;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transform: rotate(45deg);
+  color: var(--black);
+}
+.icon-menu {
+  --gap: 5px;
+  --height-bar: 2.5px;
+  --pos-y-bar-one: 0;
+  --pos-y-bar-three: 0;
+  --scale-bar: 1;
+  --rotate-bar-one: 0;
+  --rotate-bar-three: 0;
+  width: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  cursor: pointer;
+  position: relative;
+  margin: 0 2vmax;
+}
+
+.bar {
+  position: relative;
+  height: var(--height-bar);
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--black);
+}
+
+.bar--1 {
+  top: var(--pos-y-bar-one);
+  transform: rotate(var(--rotate-bar-one));
+  transition: top 200ms 100ms, transform 100ms;
+}
+
+.bar--2 {
+  transform: scaleX(var(--scale-bar));
+  transition: transform 150ms 100ms;
+}
+
+.bar--3 {
+  bottom: var(--pos-y-bar-three);
+  transform: rotate(var(--rotate-bar-three));
+  transition: bottom 200ms 100ms, transform 100ms;
+}
+
+.check-icon:checked + .icon-menu > .bar--1 {
+  transition: top 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked + .icon-menu > .bar--3 {
+  transition: bottom 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked + .icon-menu {
+  --pos-y-bar-one: calc(var(--gap) + var(--height-bar));
+  --pos-y-bar-three: calc(var(--gap) + var(--height-bar));
+  --scale-bar: 0;
+  --rotate-bar-one: 45deg;
+  --rotate-bar-three: -45deg;
+}
+header {
+  padding: 1vmax;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  background-color: var(--white);
+}
+.part1,
+.part2 {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  padding: 0.5vmax;
+  font-family: Devanagri;
+  text-shadow: 1px;
+  font-size: 0.9vmax;
+}
+.part2 b {
+  font-family: Bakbak;
+}
+.part2 .com {
+  display: none;
+}
+
+.logo-name {
+  text-decoration: none;
+  color: var(--black);
+  font-size: 1.1vmax;
+  font-family: Bakbak;
+}
+.part2 {
+  border-top: 1px solid var(--black);
+}
+
+/* --------------------------------------------------  Locomotive -------------------------------------------------- */
+/*! locomotive-scroll v3.5.4 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh;
+}
+
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100vh;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+.c-scrollbar:hover {
+  transform: scaleX(1.45);
+}
+.c-scrollbar:hover,
+.has-scroll-scrolling .c-scrollbar,
+.has-scroll-dragging .c-scrollbar {
+  opacity: 1;
+}
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--black);
+  opacity: 0.5;
+  width: 7px;
+  border-radius: 10px;
+  margin: 2px;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.has-scroll-dragging .c-scrollbar_thumb {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+/* ------------------------------------------------------ Footer ------------------------------------------------------ */
+
+footer {
+  width: 100%;
+  /* position: absolute;
+  bottom: 0; */
+  display: flex;
+  justify-content: space-between;
+  padding: 2vmax 6vmax;
+  box-shadow: 1px 13px 54px -19px rgba(255, 255, 255, 0.853);
+  background-color: black;
+}
+.foot-logo img {
+  width: 10vmax;
+}
+.quote {
+  font-family: BaiJamjuree;
+  font-size: 1vmax;
+  color: #555555;
+  text-align: center;
+}
+.foot-content {
+  width: 80%;
+  padding: 2vmax 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.icons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 0.5vmax;
+  text-decoration: none;
+  color: var(--black);
+  font-size: 1vmax;
+  font-family: Bakbak;
+  height: 3.5vmax;
+  position: relative;
+}
+.icon svg {
+  position: absolute;
+  top: 0;
+}
+.insta:hover .active {
+  animation: activeicon linear 0.5s;
+  opacity: 1;
+}
+.insta:hover .inactive {
+  animation: inactiveicon linear 0.5s;
+  opacity: 0;
+}
+.insta .active {
+  animation: inactiveicon linear 0.5s;
+  opacity: 0;
+}
+.insta .inactive {
+  animation: activeicon linear 0.5s;
+  opacity: 1;
+}
+@keyframes activeicon {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes inactiveicon {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .nav-item {
+    font-size: 1.2vmax;
+  }
+  .part1 p {
+    display: none;
+  }
+  .logo-name {
+    font-size: 2vmax;
+  }
+  .part2 p:nth-child(2) {
+    display: initial;
+  }
+  .icon svg {
+    height: 15px;
+  }
+  footer {
+    padding: 2vmax;
+  }
+}
